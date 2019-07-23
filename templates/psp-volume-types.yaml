@@ -1,0 +1,43 @@
+apiVersion: templates.gatekeeper.sh/v1alpha1
+kind: ConstraintTemplate
+metadata:
+  name: k8spspvolumetypes
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sPSPVolumeTypes
+        listKind: K8sPSPVolumeTypesList
+        plural: k8spspvolumetypes
+        singular: k8spspvolumetypes
+      validation:
+        # Schema for the `parameters` field
+        openAPIV3Schema:
+          properties:
+            volumes:
+              type: array
+              items:
+                type: string
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8spspvolumetypes
+
+        violation[{"msg": msg, "details": {}}] {
+          volume := input.review.object.spec.volumes[_]
+          not input_volume_type_allowed(volume)
+          msg := sprintf("Volume %v is not allowed, pod: %v. Allowed volume types: %v", [volume, input.review.object.metadata.name, input.constraint.spec.parameters.volumes])
+        }
+
+        input_volume_type_allowed(volume) {
+          input.constraint.spec.parameters.volumes[_] == "*"
+        }
+
+        input_volume_type_allowed(volume) {
+          has_field(volume, input.constraint.spec.parameters.volumes[_])
+        }
+
+        # has_field returns whether an object has a field
+        has_field(object, field) = true {
+          object[field]
+        }
