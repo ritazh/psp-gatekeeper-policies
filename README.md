@@ -11,10 +11,10 @@ An adminstrator can control the following by setting the field in PSP or by depl
 
 | Control Aspect                                      | Field Names in PSP                          | Gatekeeper Constraint and Constraint Template     |
 | ----------------------------------------------------| ------------------------------------------- | ------------------------------------------------- |
-| Running of privileged containers                    | `privileged`                                | [privileged-constainers](privileged-constainers)  |
-| Usage of host namespaces                            | `hostPID`, `hostIPC`                        | [host-namespaces](host-namespaces)                |
-| Usage of host networking and ports                  | `hostNetwork`, `hostPorts`                  | [host-network-ports](host-network-ports)          |
-| Usage of volume types                               | `volumes`                                   | [volumes](volumes)                                |
+| Running of privileged containers                    | `privileged`                                | [privileged-constainers](../../tree/master/privileged-containers)  |
+| Usage of host namespaces                            | `hostPID`, `hostIPC`                        | [host-namespaces](../../tree/master/host-namespaces)                |
+| Usage of host networking and ports                  | `hostNetwork`, `hostPorts`                  | [host-network-ports](../../tree/master/host-network-ports)          |
+| Usage of volume types                               | `volumes`                                   | [volumes](../../tree/master/volumes)                                |
 | Usage of the host filesystem                        | `allowedHostPaths`                          |
 | White list of Flexvolume drivers                    | `allowedFlexVolumes`                        |
 | Allocating an FSGroup that owns the pod's volumes   | `fsGroup`                                   |
