@@ -9,10 +9,12 @@ spec:
         kinds: ["Pod"]
   parameters:
     volumes: 
-    # - "*"
+    # - "*" # * may be used to allow all volume types
     - configMap
     - emptyDir
     - projected
     - secret
     - downwardAPI
     - persistentVolumeClaim
+    - hostPath #required for allowedHostPaths
+    - flexVolume #required for allowedFlexVolumes

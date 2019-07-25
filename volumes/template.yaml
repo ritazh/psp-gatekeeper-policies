@@ -28,7 +28,8 @@ spec:
           not input_volume_type_allowed(volume)
           msg := sprintf("Volume %v is not allowed, pod: %v. Allowed volume types: %v", [volume, input.review.object.metadata.name, input.constraint.spec.parameters.volumes])
         }
-
+        
+        # * may be used to allow all volume types
         input_volume_type_allowed(volume) {
           input.constraint.spec.parameters.volumes[_] == "*"
         }
