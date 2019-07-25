@@ -5,8 +5,8 @@ metadata:
   labels:
     app: nginx-host-namespace
 spec:
-  hostPID: true
-  hostIPC: true
+  hostPID: true #false
+  hostIPC: true #false
   containers:
   - name: nginx
     image: nginx

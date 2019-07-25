@@ -9,4 +9,4 @@ spec:
   - name: nginx
     image: nginx
     securityContext:
-      privileged: true
+      privileged: true #false
