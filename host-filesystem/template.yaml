@@ -31,22 +31,22 @@ spec:
         violation[{"msg": msg, "details": {}}] {
           volume := input_hostpath_volumes[_]
           not input_hostpath_allowed(volume)
-          msg := sprintf("HostPath volume %v is not allowed, pod: %v. Allowed path: %v", [volume, input.review.object.metadata.name, input.constraint.spec.parameters.allowedHostPaths])
+          msg := sprintf("HostPath volume %v is not allowed, pod: %v. Allowed path: %v", [volume, input.review.object.metadata.name, input.parameters.allowedHostPaths])
         }
 
         input_hostpath_allowed(volume) {
           # An empty list means there is no restriction on host paths used
-          input.constraint.spec.parameters.allowedHostPaths == []
+          input.parameters.allowedHostPaths == []
         }
 
         input_hostpath_allowed(volume) {
-          allowedHostPath := input.constraint.spec.parameters.allowedHostPaths[_]
+          allowedHostPath := input.parameters.allowedHostPaths[_]
           path_matches(allowedHostPath.pathPrefix, volume.hostPath.path)
           not allowedHostPath.readOnly
         }
 
         input_hostpath_allowed(volume) {
-          allowedHostPath := input.constraint.spec.parameters.allowedHostPaths[_]
+          allowedHostPath := input.parameters.allowedHostPaths[_]
           path_matches(allowedHostPath.pathPrefix, volume.hostPath.path)
           allowedHostPath.readOnly
           not writeable_input_volume_mounts(volume.name)

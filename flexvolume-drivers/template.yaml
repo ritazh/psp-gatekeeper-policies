@@ -29,16 +29,16 @@ spec:
         violation[{"msg": msg, "details": {}}] {
           volume := input_flexvolumes[_]
           not input_flexvolumes_allowed(volume)
-          msg := sprintf("FlexVolume %v is not allowed, pod: %v. Allowed drivers: %v", [volume, input.review.object.metadata.name, input.constraint.spec.parameters.allowedFlexVolumes])
+          msg := sprintf("FlexVolume %v is not allowed, pod: %v. Allowed drivers: %v", [volume, input.review.object.metadata.name, input.parameters.allowedFlexVolumes])
         }
 
         input_flexvolumes_allowed(volume) {
           # An empty list means there is no restriction on flexVolume drivers used
-          input.constraint.spec.parameters.allowedFlexVolumes == []
+          input.parameters.allowedFlexVolumes == []
         }
 
         input_flexvolumes_allowed(volume) {
-          allowedfv := input.constraint.spec.parameters.allowedFlexVolumes[_]
+          allowedfv := input.parameters.allowedFlexVolumes[_]
           allowedfv.driver == volume.flexVolume.driver
         }
 
