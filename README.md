@@ -11,13 +11,13 @@ An adminstrator can control the following by setting the field in PSP or by depl
 
 | Control Aspect                                      | Field Names in PSP                          | Gatekeeper Constraint and Constraint Template     |
 | ----------------------------------------------------| ------------------------------------------- | ------------------------------------------------- |
-| Running of privileged containers                    | `privileged`                                | [privileged-constainers](../../tree/master/privileged-containers)  |
+| Running of privileged containers                    | `privileged`                                | [privileged-containers](../../tree/master/privileged-containers)  |
 | Usage of host namespaces                            | `hostPID`, `hostIPC`                        | [host-namespaces](../../tree/master/host-namespaces)                |
 | Usage of host networking and ports                  | `hostNetwork`, `hostPorts`                  | [host-network-ports](../../tree/master/host-network-ports)          |
 | Usage of volume types                               | `volumes`                                   | [volumes](../../tree/master/volumes)                                |
-| Usage of the host filesystem                        | `allowedHostPaths`                          |
-| White list of Flexvolume drivers                    | `allowedFlexVolumes`                        |
-| Allocating an FSGroup that owns the pod's volumes   | `fsGroup`                                   |
+| Usage of the host filesystem                        | `allowedHostPaths`                          | [host-filesystem](../../tree/master/host-filesystem)                |
+| White list of Flexvolume drivers                    | `allowedFlexVolumes`                        | [flexvolume-drivers](../../tree/master/flexvolume-drivers)
+| Allocating an FSGroup that owns the pod's volumes   | `fsGroup`                                   | [fsgroup*](../../tree/master/fsgroup)
 | Requiring the use of a read only root file system   | `readOnlyRootFilesystem`                    |
 | The user and group IDs of the container             | `runAsUser`, `runAsGroup`, `supplementalGroups` |
 | Restricting escalation to root privileges           | `allowPrivilegeEscalation`, `defaultAllowPrivilegeEscalation` |
@@ -27,3 +27,6 @@ An adminstrator can control the following by setting the field in PSP or by depl
 | The AppArmor profile used by containers             | annotations                                 |
 | The seccomp profile used by containers              | annotations                                 |
 | The sysctl profile used by containers               | `forbiddenSysctls`,`allowedUnsafeSysctls`   |                  |
+
+
+> * NOTE: For PSP rules that apply default value or mutations, Gatekeeper v3 currently cannot apply mutation.
