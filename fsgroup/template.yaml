@@ -49,9 +49,15 @@ spec:
           value_within_range(range, fg)
         }
         input_fsGroup_allowed(spec) {
-          # MayRunAs - Validates pod spec fsgroup against all ranges or allow pod spec fsgroup to be left unset
-          input.parameters.rule == "MayRunAs"
-          not has_field(spec.securityContext, "fsGroup")
+            # MayRunAs - Validates pod spec fsgroup against all ranges or allow pod spec fsgroup to be left unset
+            input.parameters.rule == "MayRunAs"
+            not has_field(spec, "securityContext")
+        }
+        input_fsGroup_allowed(spec) {
+            # MayRunAs - Validates pod spec fsgroup against all ranges or allow pod spec fsgroup to be left unset
+            input.parameters.rule == "MayRunAs"
+            has_field(spec, "securityContext")
+            not has_field(spec.securityContext, "fsGroup")
         }
         input_fsGroup_allowed(spec) {
           # MayRunAs - Validates pod spec fsgroup against all ranges or allow pod spec fsgroup to be left unset

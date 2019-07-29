@@ -8,7 +8,7 @@ spec:
       - apiGroups: [""]
         kinds: ["Pod"]
   parameters:
-    rule: "MustRunAs" #"MayRunAs"
+    rule: "MayRunAs" #"MustRunAs" #"MayRunAs", "RunAsAny"
     ranges:
     - min: 1
       max: 1000
