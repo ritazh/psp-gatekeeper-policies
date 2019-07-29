@@ -16,5 +16,5 @@ spec:
     - secret
     - downwardAPI
     - persistentVolumeClaim
-    - hostPath #required for allowedHostPaths
+    #- hostPath #required for allowedHostPaths
     - flexVolume #required for allowedFlexVolumes
