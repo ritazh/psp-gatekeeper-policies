@@ -38,8 +38,7 @@ spec:
         }
 
         input_flexvolumes_allowed(volume) {
-          allowedfv := input.parameters.allowedFlexVolumes[_]
-          allowedfv.driver == volume.flexVolume.driver
+          input.parameters.allowedFlexVolumes[_].driver == volume.flexVolume.driver
         }
 
         input_flexvolumes[v] {

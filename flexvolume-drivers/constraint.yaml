@@ -8,6 +8,6 @@ spec:
       - apiGroups: [""]
         kinds: ["Pod"]
   parameters:
-    allowedFlexVolumes:
+    allowedFlexVolumes: #[]
     - driver: "example/lvm"
     - driver: "example/cifs"
