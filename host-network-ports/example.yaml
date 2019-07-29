@@ -10,5 +10,5 @@ spec:
   - name: nginx
     image: nginx
     ports:
-      - containerPort: 80
-        hostPort: 80 #9001 #8080
+    - containerPort: 9001
+      hostPort: 9001
