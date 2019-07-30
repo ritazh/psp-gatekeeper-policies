@@ -14,5 +14,5 @@ input_volume_type_allowed(volume_fields) {
 input_volume_type_allowed(volume_fields) {
     allowed_set := {x | x = input.parameters.volumes[_]}
     test := volume_fields - allowed_set
-    count(test) == 0
+    count(test) > 0
 }
