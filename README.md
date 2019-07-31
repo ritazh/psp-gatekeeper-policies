@@ -5,7 +5,7 @@ A [Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-
 sensitive aspects of the pod specification. The `PodSecurityPolicy` objects define a set of conditions that a pod must run with in order to be accepted into
 the system, as well as defaults for the related fields.
 
-[Gatekeeper](https://github.com/open-policy-agent/gatekeepe) is a customizable admission webhook for Kubernetes that enforces policies executed by the [Open Policy Agent (OPA)](https://www.openpolicyagent.org), a policy engine for Cloud Native environments hosted by CNCF.
+[Gatekeeper](https://github.com/open-policy-agent/gatekeeper) is a customizable admission webhook for Kubernetes that enforces policies executed by the [Open Policy Agent (OPA)](https://www.openpolicyagent.org), a policy engine for Cloud Native environments hosted by CNCF.
 
 An adminstrator can control the following by setting the field in PSP or by deploying the corresponding Gatekeeper constraint and constraint templates:
 
