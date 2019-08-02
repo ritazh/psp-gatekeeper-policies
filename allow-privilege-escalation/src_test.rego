@@ -1,4 +1,4 @@
-package k8spspallowprivilegeescalation
+package k8spspallowprivilegeescalationcontainer
 
 test_input_container_not_privilege_escalation_allowed {
     input := { "review": input_review}
@@ -8,12 +8,12 @@ test_input_container_not_privilege_escalation_allowed {
 test_input_container_privilege_escalation_not_allowed {
     input := { "review": input_review_priv}
     results := violation with input as input
-    count(results) > 0
+    count(results) == 1
 }
 test_input_container_many_not_privilege_escalation_allowed {
     input := { "review": input_review_many}
     results := violation with input as input
-    count(results) == 0
+    count(results) == 2
 }
 test_input_container_many_mixed_privilege_escalation_not_allowed {
     input := { "review": input_review_many_mixed}
@@ -33,7 +33,7 @@ input_review = {
         },
         "spec": {
             "containers": input_containers_one
-      }
+        }
     }
 }
 
@@ -43,7 +43,7 @@ input_review_priv = {
             "name": "nginx"
         },
         "spec": {
-            "containers": input_containers_one_priv
+            "containers": input_containers_one_priv,
       }
     }
 }

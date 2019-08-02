@@ -3,7 +3,7 @@ package k8spspallowprivilegeescalationcontainer
 violation[{"msg": msg, "details": {}}] {
     c := input_containers[_]
     input_allow_priviledge_escalation_allowed(c)
-    msg := sprintf("Privilege escalation container is not allowed: %v, securityContext: %v", [c.name, c.securityContext])
+    msg := sprintf("Privilege escalation container is not allowed: %v", [c.name])
 }
 
 input_allow_priviledge_escalation_allowed(c) {
