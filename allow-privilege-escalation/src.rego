@@ -10,9 +10,12 @@ input_allow_priviledge_escalation_allowed(c) {
     not has_field(c, "securityContext")
 }
 input_allow_priviledge_escalation_allowed(c) {
+    has_field(c, "securityContext")
     not has_field(c.securityContext, "allowPrivilegeEscalation")
 }
 input_allow_priviledge_escalation_allowed(c) {
+    has_field(c, "securityContext")
+    has_field(c.securityContext, "allowPrivilegeEscalation")
     c.securityContext.allowPrivilegeEscalation
 }
 input_containers[c] {

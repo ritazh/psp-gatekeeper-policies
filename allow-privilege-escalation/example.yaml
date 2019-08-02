@@ -9,4 +9,4 @@ spec:
   - name: nginx
     image: nginx
     securityContext:
-      allowPrivilegeEscalation: false #false
+      allowPrivilegeEscalation: true #false
