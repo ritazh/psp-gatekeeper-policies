@@ -11,10 +11,6 @@ input_allow_priviledge_escalation_allowed(c) {
 }
 input_allow_priviledge_escalation_allowed(c) {
     has_field(c, "securityContext")
-    not has_field(c.securityContext, "allowPrivilegeEscalation")
-}
-input_allow_priviledge_escalation_allowed(c) {
-    has_field(c, "securityContext")
     has_field(c.securityContext, "allowPrivilegeEscalation")
     c.securityContext.allowPrivilegeEscalation
 }
