@@ -1,26 +1,26 @@
-package k8spspprivileged
+package k8spspallowprivilegeescalationcontainer
 
-test_input_container_not_privileged_allowed {
+test_input_container_not_privilege_escalation_allowed {
     input := { "review": input_review}
     results := violation with input as input
     count(results) == 0
 }
-test_input_container_privileged_not_allowed {
+test_input_container_privilege_escalation_not_allowed {
     input := { "review": input_review_priv}
     results := violation with input as input
-    count(results) > 0
+    count(results) == 1
 }
-test_input_container_many_not_privileged_allowed {
+test_input_container_many_not_privilege_escalation_allowed {
     input := { "review": input_review_many}
     results := violation with input as input
-    count(results) == 0
+    count(results) == 1
 }
-test_input_container_many_mixed_privileged_not_allowed {
+test_input_container_many_mixed_privilege_escalation_not_allowed {
     input := { "review": input_review_many_mixed}
     results := violation with input as input
     count(results) > 0
 }
-test_input_container_many_mixed_privileged_not_allowed_two {
+test_input_container_many_mixed_privilege_escalation_not_allowed_two {
     input := { "review": input_review_many_mixed_two}
     results := violation with input as input
     count(results) == 2
@@ -33,7 +33,7 @@ input_review = {
         },
         "spec": {
             "containers": input_containers_one
-      }
+        }
     }
 }
 
@@ -43,7 +43,7 @@ input_review_priv = {
             "name": "nginx"
         },
         "spec": {
-            "containers": input_containers_one_priv
+            "containers": input_containers_one_priv,
       }
     }
 }
@@ -89,7 +89,7 @@ input_containers_one = [
     "name": "nginx",
     "image": "nginx",
     "securityContext": {
-      "privileged": false
+      "allowPrivilegeEscalation": false
     }
 }]
 
@@ -98,7 +98,7 @@ input_containers_one_priv = [
     "name": "nginx",
     "image": "nginx",
     "securityContext": {
-      "privileged": true
+      "allowPrivilegeEscalation": true
     }
 }]
 
@@ -107,7 +107,7 @@ input_containers_many = [
     "name": "nginx",
     "image": "nginx",
     "securityContext": {
-      "privileged": false
+      "allowPrivilegeEscalation": false
     }
 },
 {
@@ -120,13 +120,13 @@ input_containers_many_mixed = [
     "name": "nginx",
     "image": "nginx",
     "securityContext": {
-      "privileged": false
+      "allowPrivilegeEscalation": false
     }
 },
 {
     "name": "nginx1",
     "image": "nginx",
     "securityContext": {
-      "privileged": true
+      "allowPrivilegeEscalation": true
     }
 }]
