@@ -1,27 +1,27 @@
 package k8spsphostfilesystem
 
-test_input_hostpath_allowed_all { 
-    input := { "review": input_review, "parameters": input_parameters_wildcard} 
+test_input_hostpath_allowed_all {
+    input := { "review": input_review, "parameters": input_parameters_wildcard}
     results := violation with input as input
     count(results) == 0
 }
-test_input_hostpath_allowed_readonly { 
-    input := { "review": input_review_many, "parameters": input_parameters_in_list} 
+test_input_hostpath_allowed_readonly {
+    input := { "review": input_review_many, "parameters": input_parameters_in_list}
     results := violation with input as input
     count(results) == 0
 }
-test_input_hostpath_allowed_not_writable { 
-    input := { "review": input_review, "parameters": input_parameters_in_list} 
+test_input_hostpath_allowed_not_writable {
+    input := { "review": input_review, "parameters": input_parameters_in_list}
     results := violation with input as input
     count(results) > 0
 }
-test_input_hostpath_allowed_is_writable { 
-    input := { "review": input_review, "parameters": input_parameters_in_list_writable} 
+test_input_hostpath_allowed_is_writable {
+    input := { "review": input_review, "parameters": input_parameters_in_list_writable}
     results := violation with input as input
     count(results) == 0
 }
-test_input_hostpath_not_allowed { 
-    input := { "review": input_review, "parameters": input_parameters_not_in_list_writable} 
+test_input_hostpath_not_allowed {
+    input := { "review": input_review, "parameters": input_parameters_not_in_list_writable}
     results := violation with input as input
     count(results) > 0
 }

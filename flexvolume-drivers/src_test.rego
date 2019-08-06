@@ -4,29 +4,29 @@ has_field(object, field) = true {
     object[field]
 }
 
-test_input_flexvolume_allowed_all { 
-    input := { "review": input_review, "parameters": input_parameters_wildcard} 
+test_input_flexvolume_allowed_all {
+    input := { "review": input_review, "parameters": input_parameters_wildcard}
     results := violation with input as input
     count(results) == 0
 }
-test_input_no_flexvolume_is_allowed { 
-    input := { "review": input_review_no_flexvolume, "parameters": input_parameters_in_list} 
+test_input_no_flexvolume_is_allowed {
+    input := { "review": input_review_no_flexvolume, "parameters": input_parameters_in_list}
     results := violation with input as input
     count(results) == 0
 }
-test_input_flexvolume_is_allowed { 
-    input := { "review": input_review_many, "parameters": input_parameters_in_list} 
+test_input_flexvolume_is_allowed {
+    input := { "review": input_review_many, "parameters": input_parameters_in_list}
     results := violation with input as input
     count(results) == 0
 }
 
-test_input_flexvolume_not_allowed { 
-    input := { "review": input_review, "parameters": input_parameters_not_in_list} 
+test_input_flexvolume_not_allowed {
+    input := { "review": input_review, "parameters": input_parameters_not_in_list}
     results := violation with input as input
     count(results) == 1
 }
-test_input_flexvolume_many_not_allowed { 
-    input := { "review": input_review_many, "parameters": input_parameters_not_in_list} 
+test_input_flexvolume_many_not_allowed {
+    input := { "review": input_review_many, "parameters": input_parameters_not_in_list}
     results := violation with input as input
     count(results) == 1
 }
