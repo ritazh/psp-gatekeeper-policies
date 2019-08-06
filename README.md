@@ -18,7 +18,7 @@ An adminstrator can control the following by setting the field in PSP or by depl
 | Usage of volume types                             | `volumes`                                                                   | [volumes](../../tree/master/volumes)                             |
 | Usage of the host filesystem                      | `allowedHostPaths`                                                          | [host-filesystem](../../tree/master/host-filesystem)             |
 | White list of Flexvolume drivers                  | `allowedFlexVolumes`                                                        | [flexvolume-drivers](../../tree/master/flexvolume-drivers)       |
-| Allocating an FSGroup that owns the pod's volumes | `fsGroup`                                                                   | [fsgroup](../../tree/master/fsgroup)                             |
+| Allocating an FSGroup that owns the pod's volumes | `fsGroup`                                                                   | [fsgroup](../../tree/master/fsgroup)<sup>\*</sup>                |
 | Requiring the use of a read only root file system | `readOnlyRootFilesystem`                                                    |
 | The user and group IDs of the container           | `runAsUser`, `runAsGroup`, `supplementalGroups`                             |
 | Restricting escalation to root privileges         | `allowPrivilegeEscalation`, `defaultAllowPrivilegeEscalation`               | [allow-privilege-escalation](allow-privilege-escalation)         |
@@ -29,4 +29,4 @@ An adminstrator can control the following by setting the field in PSP or by depl
 | The seccomp profile used by containers            | annotations                                                                 |
 | The sysctl profile used by containers             | `forbiddenSysctls`,`allowedUnsafeSysctls`                                   |                                                                  |
 
-> - NOTE: For PSP rules that apply default value or mutations, Gatekeeper v3 currently cannot apply mutation.
+<sup>\*</sup> For PSP rules that apply default value or mutations, Gatekeeper v3 currently cannot apply mutation.
