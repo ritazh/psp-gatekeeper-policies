@@ -3,7 +3,7 @@ package k8spspprocmount
 violation[{"msg": msg, "details": {}}] {
     c := input_containers[_]
     not input_proc_mount_type_allowed(c)
-    msg := sprintf("ProcMount type is not allowed, pod: %v. Allowed procMount types: %v", [input.review.object.metadata.name, input.parameters.procMount])
+    msg := sprintf("ProcMount type is not allowed, pod: %v. Allowed procMount types: %v", [c.name, input.parameters.procMount])
 }
 
 input_proc_mount_type_allowed(c) {
