@@ -1,29 +1,24 @@
-package k8spspprivileged
+package k8spspreadonlyrootfilesystem
 
-test_input_container_not_privileged_allowed {
+test_input_container_not_readonlyrootfilesystem_allowed {
     input := { "review": input_review}
     results := violation with input as input
-    count(results) == 0
+    count(results) == 1
 }
-test_input_container_privileged_not_allowed {
-    input := { "review": input_review_priv}
-    results := violation with input as input
-    count(results) > 0
-}
-test_input_container_many_not_privileged_allowed {
-    input := { "review": input_review_many}
+test_input_container_readonlyrootfilesystem_not_allowed {
+    input := { "review": input_review_ro}
     results := violation with input as input
     count(results) == 0
 }
-test_input_container_many_mixed_privileged_not_allowed {
+test_input_container_many_mixed_readonlyrootfilesystem_not_allowed {
     input := { "review": input_review_many_mixed}
     results := violation with input as input
-    count(results) > 0
+    count(results) == 2
 }
-test_input_container_many_mixed_privileged_not_allowed_two {
+test_input_container_many_mixed_readonlyrootfilesystem_not_allowed_two {
     input := { "review": input_review_many_mixed_two}
     results := violation with input as input
-    count(results) == 2
+    count(results) == 1
 }
 
 input_review = {
@@ -37,25 +32,13 @@ input_review = {
     }
 }
 
-input_review_priv = {
+input_review_ro = {
     "object": {
         "metadata": {
             "name": "nginx"
         },
         "spec": {
-            "containers": input_containers_one_priv
-      }
-    }
-}
-
-input_review_many = {
-    "object": {
-        "metadata": {
-            "name": "nginx"
-        },
-        "spec": {
-            "containers": input_containers_many,
-            "initContainers": input_containers_one
+            "containers": input_containers_one_ro
       }
     }
 }
@@ -67,7 +50,7 @@ input_review_many_mixed = {
         },
         "spec": {
             "containers": input_containers_many,
-            "initContainers": input_containers_one_priv
+            "initContainers": input_containers_one
       }
     }
 }
@@ -79,7 +62,7 @@ input_review_many_mixed_two = {
         },
         "spec": {
             "containers": input_containers_many_mixed,
-            "initContainers": input_containers_one_priv
+            "initContainers": input_containers_one_ro
       }
     }
 }
@@ -89,16 +72,16 @@ input_containers_one = [
     "name": "nginx",
     "image": "nginx",
     "securityContext": {
-      "privileged": false
+      "readOnlyRootFilesystem": false
     }
 }]
 
-input_containers_one_priv = [
+input_containers_one_ro = [
 {
     "name": "nginx",
     "image": "nginx",
     "securityContext": {
-      "privileged": true
+      "readOnlyRootFilesystem": true
     }
 }]
 
@@ -107,7 +90,7 @@ input_containers_many = [
     "name": "nginx",
     "image": "nginx",
     "securityContext": {
-      "privileged": false
+      "readOnlyRootFilesystem": true
     }
 },
 {
@@ -120,13 +103,13 @@ input_containers_many_mixed = [
     "name": "nginx",
     "image": "nginx",
     "securityContext": {
-      "privileged": false
+      "readOnlyRootFilesystem": false
     }
 },
 {
     "name": "nginx1",
     "image": "nginx",
     "securityContext": {
-      "privileged": true
+      "readOnlyRootFilesystem": true
     }
 }]
