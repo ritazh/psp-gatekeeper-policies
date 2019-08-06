@@ -13,12 +13,12 @@ test_input_container_readonlyrootfilesystem_not_allowed {
 test_input_container_many_mixed_readonlyrootfilesystem_not_allowed {
     input := { "review": input_review_many_mixed}
     results := violation with input as input
-    count(results) == 0
+    count(results) == 2
 }
 test_input_container_many_mixed_readonlyrootfilesystem_not_allowed_two {
     input := { "review": input_review_many_mixed_two}
     results := violation with input as input
-    count(results) == 2
+    count(results) == 1
 }
 
 input_review = {
@@ -50,7 +50,7 @@ input_review_many_mixed = {
         },
         "spec": {
             "containers": input_containers_many,
-            "initContainers": input_containers_one_ro
+            "initContainers": input_containers_one
       }
     }
 }
