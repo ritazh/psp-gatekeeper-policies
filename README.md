@@ -24,7 +24,7 @@ An adminstrator can control the following by setting the field in PSP or by depl
 | Restricting escalation to root privileges         | `allowPrivilegeEscalation`, `defaultAllowPrivilegeEscalation`               | [allow-privilege-escalation](allow-privilege-escalation)         |
 | Linux capabilities                                | `defaultAddCapabilities`, `requiredDropCapabilities`, `allowedCapabilities` |
 | The SELinux context of the container              | `seLinux`                                                                   |
-| The Allowed Proc Mount types for the container    | `allowedProcMountTypes`                                                     |
+| The Allowed Proc Mount types for the container    | `allowedProcMountTypes`                                                     | [proc-mount](proc-mount)                                         |
 | The AppArmor profile used by containers           | annotations                                                                 |
 | The seccomp profile used by containers            | annotations                                                                 |
 | The sysctl profile used by containers             | `forbiddenSysctls`,`allowedUnsafeSysctls`                                   |                                                                  |
