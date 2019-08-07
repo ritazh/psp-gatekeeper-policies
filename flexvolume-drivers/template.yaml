@@ -45,7 +45,7 @@ spec:
           v := input.review.object.spec.volumes[_]
           has_field(v, "flexVolume")
         }
-        
+
         # has_field returns whether an object has a field
         has_field(object, field) = true {
           object[field]

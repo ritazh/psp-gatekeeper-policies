@@ -8,7 +8,7 @@ spec:
       - apiGroups: [""]
         kinds: ["Pod"]
   parameters:
-    volumes: 
+    volumes:
     # - "*" # * may be used to allow all volume types
     - configMap
     - emptyDir
