@@ -1,5 +1,10 @@
 # psp-gatekeeper-policies
 
+⚠️⚠️⚠️ This repo has been donated to the CNCF [Open Policy Agent Gatekeeper](https://github.com/open-policy-agent/gatekeeper) project. You can find the same policies under [https://github.com/open-policy-agent/gatekeeper/tree/master/library/pod-security-policy/](https://github.com/open-policy-agent/gatekeeper/tree/master/library/pod-security-policy/). Feel free to open issues and PRs there!
+
+--------------
+
+
 This repo contains common policies needed in Pod Security Policy but implemented as Constraints and Constraint Templates with Gatekeeper.
 
 A [Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) is a cluster-level resource that controls security
